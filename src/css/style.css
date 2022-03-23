@@ -1,9 +1,13 @@
 header {
+  position: fixed;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 67px;
   background: #c3cfd9;
+  top: 0;
+  left: 0;
+  width: 100%;
 }
 
 header h1 {
@@ -15,6 +19,19 @@ header h1 {
   color: #e8833a;
 }
 
+main {
+  margin-top: 67px;
+}
+
+.homePage {
+  margin-top: 97px;
+}
+
+.movie-sessions {
+  margin-bottom: 117px;
+}
+
+.movie-sessions > p,
 .homePage p {
   display: flex;
   justify-content: center;
@@ -89,4 +106,102 @@ header h1 {
 .homePage section figure img {
   width: 129px;
   height: 193px;
+}
+
+.movie-sessions {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.movie-sessions section {
+  width: 90%;
+}
+
+.session {
+  margin-bottom: 23px;
+}
+
+.session p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 23px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.02em;
+
+  margin-bottom: 22px;
+
+  color: #293845;
+}
+
+.session button {
+  width: 83px;
+  height: 43px;
+
+  background: #e8833a;
+  border-radius: 3px;
+
+  border: none;
+
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.02em;
+
+  color: #ffffff;
+
+  margin-right: 8px;
+}
+
+footer {
+  position: fixed;
+  width: 375px;
+  height: 117px;
+  left: 0px;
+  bottom: 0px;
+  width: 100%;
+
+  background: #dfe6ed;
+  border: 1px solid #9eadba;
+
+  display: flex;
+  align-items: center;
+}
+
+footer .img-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 64px;
+  height: 89px;
+
+  min-width: 64px;
+
+  background: #ffffff;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
+
+  margin-left: 10px;
+  margin-right: 14px;
+}
+
+footer .img-container img {
+  width: 48px;
+  height: 72px;
+}
+
+footer .textWrapper p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+
+  color: #293845;
 }

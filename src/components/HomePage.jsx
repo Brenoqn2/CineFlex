@@ -1,5 +1,6 @@
 import axios from "axios";
 import React from "react";
+import { Link } from "react-router-dom";
 
 export default function HomePage(props) {
   const { setMovie } = props;
@@ -10,7 +11,6 @@ export default function HomePage(props) {
     const promise = axios.get(baseURL);
     promise.then((response) => {
       setMovies(response.data);
-      console.log(response);
     });
   }, []);
 
@@ -20,9 +20,17 @@ export default function HomePage(props) {
       <section>
         {movies.map((movie) => {
           return (
-            <figure key={movie.title}>
-              <img src={movie.posterURL} alt={movie.title} />
-            </figure>
+            <Link
+              key={movie.title}
+              to={`/sessoes/${movie.id}`}
+              onClick={() => {
+                setMovie(movie.id);
+              }}
+            >
+              <figure>
+                <img src={movie.posterURL} alt={movie.title} />
+              </figure>
+            </Link>
           );
         })}
       </section>
