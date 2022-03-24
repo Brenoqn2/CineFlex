@@ -1,9 +1,10 @@
 import React from "react";
 import axios from "axios";
 import Footer from "./Footer";
+import { Link } from "react-router-dom";
 
 export default function MovieSessions(props) {
-  const { id } = props;
+  const { id, setSessionID } = props;
   const baseURL = `https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`;
   const [sessions, setSessions] = React.useState({ days: [] });
 
@@ -11,6 +12,7 @@ export default function MovieSessions(props) {
     const promise = axios.get(baseURL);
     promise.then((response) => {
       setSessions(response.data);
+      console.log(response.data);
     });
   }, []);
 
@@ -27,9 +29,15 @@ export default function MovieSessions(props) {
                 <div className="showtimes">
                   {session.showtimes.map((showtime) => {
                     return (
-                      <button key={date + showtime.name}>
-                        {showtime.name}
-                      </button>
+                      <Link
+                        onClick={() => {
+                          setSessionID(showtime.id);
+                        }}
+                        key={date + showtime.name}
+                        to={`/assentos/${showtime.id}`}
+                      >
+                        <button>{showtime.name}</button>
+                      </Link>
                     );
                   })}
                 </div>
