@@ -4,7 +4,7 @@ export default function Footer(props) {
   return (
     <footer>
       <div className="img-container">
-        <img src={img} />
+        <img src={img} alt="" />
       </div>
       <div className="textWrapper">
         <p>{title}</p>

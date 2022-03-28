@@ -5,16 +5,15 @@ import { Link } from "react-router-dom";
 
 export default function MovieSessions(props) {
   const { id, setSessionID } = props;
-  const baseURL = `https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`;
   const [sessions, setSessions] = React.useState({ days: [] });
 
   React.useEffect(() => {
+    const baseURL = `https://mock-api.driven.com.br/api/v5/cineflex/movies/${id}/showtimes`;
     const promise = axios.get(baseURL);
     promise.then((response) => {
       setSessions(response.data);
-      console.log(response.data);
     });
-  }, []);
+  }, [id]);
 
   return (
     <>

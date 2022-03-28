@@ -4,8 +4,7 @@ import Footer from "./Footer";
 import { Link } from "react-router-dom";
 
 export default function SeatsPage(props) {
-  const { id } = props;
-  const baseURL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`;
+  const { id, setMovie, setDate, setHour, setSeats, setCpf, setName } = props;
   const [session, setSession] = React.useState({
     seats: [],
     movie: [],
@@ -26,11 +25,47 @@ export default function SeatsPage(props) {
   }
 
   React.useEffect(() => {
+    const baseURL = `https://mock-api.driven.com.br/api/v5/cineflex/showtimes/${id}/seats`;
     const promise = axios.get(baseURL);
     promise.then((response) => {
       setSession(response.data);
     });
-  }, []);
+  }, [id]);
+
+  const [userName, setUserName] = React.useState("");
+  const [CPF, setCPF] = React.useState("");
+
+  function getName(event) {
+    setUserName(event.target.value);
+  }
+
+  function getCPF(event) {
+    setCPF(event.target.value);
+  }
+
+  function sendInfo() {
+    const seatsIDs = chosenSeats.filter((element) => element !== null);
+    const object = { ids: [...seatsIDs], name: userName, cpf: CPF };
+    const promise = axios.post(
+      "https://mock-api.driven.com.br/api/v5/cineflex/seats/book-many",
+      object
+    );
+    promise.then();
+    setMovie(session.movie.title);
+    setDate(session.day.date);
+    setHour(session.name);
+    let chosenSeatsNumber = [];
+    for (let i = 0; i < session.seats.length; i++) {
+      for (let j = 0; j < chosenSeats.length; j++) {
+        if (session.seats[i].id === chosenSeats[j]) {
+          chosenSeatsNumber.push(session.seats[i].name);
+        }
+      }
+    }
+    setSeats(chosenSeatsNumber);
+    setCpf(CPF);
+    setName(userName);
+  }
 
   return (
     <>
@@ -61,14 +96,36 @@ export default function SeatsPage(props) {
             })}
           </div>
         </section>
+        <div className="seats-example">
+          <div className="seat-example">
+            <div className="circle chosen"></div>
+            <p>Selecionado</p>
+          </div>
+          <div className="seat-example">
+            <div className="circle available"></div>
+            <p>Disponível</p>
+          </div>
+          <div className="seat-example">
+            <div className="circle unavailable"></div>
+            <p>Indisponível</p>
+          </div>
+        </div>
         <section className="inputs-seats-page">
           <p>Nome do comprador:</p>
-          <input type="text" placeholder="Digite seu nome..."></input>
+          <input
+            type="text"
+            placeholder="Digite seu nome..."
+            onChange={getName}
+          ></input>
           <p>CPF do comprador:</p>
-          <input type="text" placeholder="Digite seu CPF..."></input>
+          <input
+            type="text"
+            placeholder="Digite seu CPF..."
+            onChange={getCPF}
+          ></input>
         </section>
         <div className="btn-container">
-          <Link to="/">
+          <Link to="/sucesso" onClick={sendInfo}>
             <button>Reservar assento(s)</button>
           </Link>
         </div>

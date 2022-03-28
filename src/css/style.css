@@ -252,6 +252,40 @@ footer .textWrapper p {
   color: #000000;
 }
 
+.circle {
+  width: 24px;
+  height: 24px;
+  box-sizing: border-box;
+  border-radius: 17px;
+}
+
+.seats-example {
+  display: flex;
+  width: 275px;
+  margin: 10px auto 42px;
+  justify-content: space-between;
+}
+
+.seat-example {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.seat-example p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 13px;
+  line-height: 15px;
+  display: flex;
+  align-items: center;
+  letter-spacing: -0.013em;
+
+  color: #4e5a65;
+}
+
 .available {
   background: #c3cfd9;
   border: 1px solid #7b8b99;
@@ -269,7 +303,7 @@ footer .textWrapper p {
 
 .inputs-seats-page {
   width: 323px;
-  margin: 0 auto 50px;
+  margin: 0 auto;
 }
 
 .inputs-seats-page p {
@@ -313,6 +347,7 @@ footer .textWrapper p {
   color: #afafaf;
 }
 
+.success-page button,
 .seats-page button {
   width: 225px;
   height: 42px;
@@ -336,4 +371,58 @@ footer .textWrapper p {
   width: 100%;
   display: flex;
   justify-content: center;
+}
+
+.success-page {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.success-page h1 {
+  margin-top: 97px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+  letter-spacing: 0.04em;
+  color: #247a6b;
+}
+
+.success-page h2 {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 700;
+  font-size: 24px;
+  line-height: 28px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #293845;
+
+  margin-top: 40px;
+  margin-bottom: 10px;
+}
+
+.success-page p {
+  font-family: "Roboto";
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px;
+  line-height: 26px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+
+  color: #293845;
+}
+
+.success-page button {
+  margin-top: 62px;
+  margin-bottom: 30px;
 }
