@@ -89,7 +89,11 @@ export default function SeatsPage(props) {
                   <p>{seat.name}</p>
                 </div>
               ) : (
-                <div key={seat.id} className={`seat ${status}`}>
+                <div
+                  key={seat.id}
+                  className={`seat ${status}`}
+                  onClick={() => alert("Esse assento não está disponível")}
+                >
                   <p>{seat.name}</p>
                 </div>
               );
